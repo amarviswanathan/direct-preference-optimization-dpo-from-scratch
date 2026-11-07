@@ -9,7 +9,6 @@ import numpy as np
 # Step 1 - log_softmax
 import numpy as np
 def log_softmax(logits, axis=-1):
-    # TODO: convert logits into numerically stable log-probabilities along axis
     logits = np.asarray(logits,dtype=np.float64)
     max_logit = np.max(logits,axis=axis,keepdims=True)
     
