@@ -18,8 +18,19 @@ def log_softmax(logits, axis=-1):
 
     return shifted - np.log(sum_exp)
 
-# Step 2 - softmax (not yet solved)
-# TODO: implement
+# Step 2 - softmax
+import numpy as np
+def softmax(logits, axis=-1):
+   
+    logits = np.asarray(logits,dtype=np.float64)
+    
+    #Stable softmax
+    max_logit = np.max(logits,axis=axis,keepdims=True)
+    shifted_logits = logits - max_logit
+    exp_shifted = np.exp(shifted_logits)
+    exp_sum_shifted = np.sum(exp_shifted,axis=axis,keepdims=True)
+    
+    return exp_shifted/exp_sum_shifted
 
 # Step 3 - gather_token_logprobs (not yet solved)
 # TODO: implement
